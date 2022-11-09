@@ -1,46 +1,15 @@
-# Getting Started with Create React App
+## 검색영역 클론
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 기능 구현
 
-## Available Scripts
+- [ ] 사이트 검색영역 레이아웃 클론
+- [ ] 검색창에 키워드 검색 시 검색어 추천 (api호출)
+- [ ] 검색한 키워드와 일치하는 텍스트 볼드처리
+- [ ] 검색어가 없다면 '검색어 없음' 안내
+- [ ] 검색창은 키보드로 이동
 
-In the project directory, you can run:
+### 최적화
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [ ] API 호출별로 로컬 캐싱
+- [ ] 입력마다 API 호출 X -> API 호출 횟수 줄이는 전략 짜기
+- [ ] API 호출할 때마다 console.info('calling api') 출력
