@@ -1,6 +1,14 @@
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
-import { StSearch, StTitle, InputWrap, StInput } from './Search.style';
+import {
+  StSearch,
+  StTitle,
+  InputWrap,
+  StInput,
+  StRecommendWrap,
+  StRecommendTitle,
+  StRecommendContent,
+} from './Search.style';
 
 const Search = () => {
   return (
@@ -13,6 +21,17 @@ const Search = () => {
         <FiSearch />
         <StInput type="search" placeholder="질환명을 입력해 주세요." />
       </InputWrap>
+      <StRecommendWrap>
+        <StRecommendTitle>추천 검색어</StRecommendTitle>
+        <StRecommendContent>
+          <FiSearch />
+          <span>간세포암</span>
+        </StRecommendContent>
+        <StRecommendContent>
+          <FiSearch />
+          <span>구강암</span>
+        </StRecommendContent>
+      </StRecommendWrap>
     </StSearch>
   );
 };
