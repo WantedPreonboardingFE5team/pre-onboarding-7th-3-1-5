@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
 import { IIllness } from '../../types/illness';
 import fetchSearchData from '../../apis';
-import { StRecommend, StRecommendTitle, StRecommendContent } from './Recommend.style';
+import { StRecommend, StRecommendTitle } from './Recommend.style';
 import Loading from './Loading';
 import NoRecommendList from './NoRecommendList';
+import RecommendList from './RecommendList';
 
 const Recommend = ({ keyword }: { keyword: string }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [recommendList, setRecommendList] = useState<IIllness[]>([]);
 
-  // TODO input 값 포함하는 글자 볼드처리 하기
   // TODO recommendList 개수 제한하기 (10개?)
   // TODO 키보드로 추천 검색어 이동가능하게 하기
   useEffect(() => {
@@ -30,12 +29,9 @@ const Recommend = ({ keyword }: { keyword: string }) => {
   }, [keyword]);
 
   // TODO context api 또는 redux, recoil 등을 사용하면 분리 가능 (로컬캐싱 구현 필요)
-  const RecommendList = recommendList.map((recommend: IIllness) => {
+  const RecommendListComp = recommendList.map((recommend: IIllness) => {
     return (
-      <StRecommendContent key={recommend.sickCd}>
-        <FiSearch />
-        <span>{recommend.sickNm}</span>
-      </StRecommendContent>
+      <RecommendList key={recommend.sickCd} sickCd={recommend.sickCd} sickNm={recommend.sickNm} keyword={keyword} />
     );
   });
 
@@ -43,7 +39,7 @@ const Recommend = ({ keyword }: { keyword: string }) => {
     <StRecommend>
       <StRecommendTitle>추천 검색어</StRecommendTitle>
       {isLoading && <Loading />}
-      {RecommendList}
+      {RecommendListComp}
       {!isLoading && RecommendList.length === 0 && <NoRecommendList />}
     </StRecommend>
   );

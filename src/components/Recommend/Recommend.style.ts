@@ -25,8 +25,12 @@ export const StRecommendContent = styled.div`
     margin-right: 10px;
   }
 
-  span {
+  p {
     line-height: 5px;
+  }
+
+  span {
+    font-weight: 700;
   }
 `;
 
