@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import { IIllness } from '../../types/illness';
 import fetchSearchData from '../../apis';
 import { StRecommend, StRecommendTitle } from './Recommend.style';
+import { keywordState } from '../../recoil/keywordState';
 import Loading from './Loading';
 import NoRecommendList from './NoRecommendList';
 import RecommendList from './RecommendList';
 
-const Recommend = ({ keyword }: { keyword: string }) => {
+const Recommend = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [recommendList, setRecommendList] = useState<IIllness[]>([]);
+
+  const keyword = useRecoilValue(keywordState);
 
   // TODO recommendList 개수 제한하기 (10개?)
   // TODO 키보드로 추천 검색어 이동가능하게 하기
@@ -30,9 +34,7 @@ const Recommend = ({ keyword }: { keyword: string }) => {
 
   // TODO context api 또는 redux, recoil 등을 사용하면 분리 가능 (로컬캐싱 구현 필요)
   const RecommendListComp = recommendList.map((recommend: IIllness) => {
-    return (
-      <RecommendList key={recommend.sickCd} sickCd={recommend.sickCd} sickNm={recommend.sickNm} keyword={keyword} />
-    );
+    return <RecommendList key={recommend.sickCd} sickCd={recommend.sickCd} sickNm={recommend.sickNm} />;
   });
 
   return (
