@@ -47,33 +47,3 @@ export const StInput = styled.input`
 
   font-size: 18px;
 `;
-
-export const StRecommendWrap = styled.div`
-  width: 400px;
-
-  margin-top: 5px;
-  padding: 20px 20px;
-
-  border-radius: 10px;
-  background-color: white;
-`;
-
-export const StRecommendTitle = styled.p`
-  font-size: 12px;
-  color: gray;
-`;
-
-export const StRecommendContent = styled.div`
-  display: flex;
-  align-items: center;
-
-  margin-top: 20px;
-
-  svg {
-    margin-right: 10px;
-  }
-
-  span {
-    line-height: 5px;
-  }
-`;
