@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import { FiSearch } from 'react-icons/fi';
 import { keywordState, recommendState, keydownState } from '../../recoil/searchState';
-import { IIllness } from '../../types/illness';
+import { IIllness, IllnessList } from '../../types/illness';
 import { StRecommendContent } from './Recommend.style';
 import fetchSearchData from '../../apis';
 import NoRecommendList from './NoRecommendList';
 import Loading from './Loading';
+import { getSessionStorage, setSessionStorage } from '../../utils/getSessionStorage';
 
 const RecommendList = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -19,21 +20,26 @@ const RecommendList = () => {
   const keyword = useRecoilValue(keywordState).toLocaleUpperCase();
 
   useEffect(() => {
-    setRecommendList([]); // 이 과정이 없으면 이전 추천 목록이 남아있어서 로딩중 아래에 데이터가 나와있음
-    indexReset(); // 포커싱이 검색창으로 돌아가야하기 때문, 설정 안한다면 이전 index에 머물러서 처음 검색했는데 추천 검색어 중간에 포커싱 되어있을 수 있다
-    // api 호출이 여러번 되는 것을 막기위해 setTimeout을 사용하여 debounce 처리
-    const debounce = setTimeout(
-      () =>
+    const cashingData = JSON.parse(getSessionStorage(keyword) || '[]');
+
+    setRecommendList([]);
+    indexReset();
+    const debounce = setTimeout(() => {
+      if (keyword && cashingData.length !== 0) {
+        setRecommendList(cashingData);
+        setIsLoading(false);
+      } else {
         keyword &&
-        fetchSearchData(keyword).then((result) => {
-          setRecommendList(result);
-          setIsLoading(false);
-        }),
-      500,
-    );
+          fetchSearchData(keyword).then((result) => {
+            const cashing = JSON.stringify(result);
+            setRecommendList(result);
+            setSessionStorage(keyword, cashing);
+            setIsLoading(false);
+          });
+      }
+    }, 500);
     return () => clearInterval(debounce);
   }, [keyword, setRecommendList, indexReset]);
-
   return (
     <div>
       {isLoading && <Loading />}
