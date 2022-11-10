@@ -3,9 +3,13 @@ import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
+  * {
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+  }
   body {
-  font-family: 'Noto Sans KR', sans-serif;
-  box-sizing: border-box;
+    background-color: #cae9ff;
+
   }
 `;
 
