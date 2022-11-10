@@ -26,8 +26,7 @@ const RecommendList = () => {
       () =>
         keyword &&
         fetchSearchData(keyword).then((result) => {
-          const sliceData = result.slice(0, 10);
-          setRecommendList(sliceData);
+          setRecommendList(result);
           setIsLoading(false);
         }),
       500,

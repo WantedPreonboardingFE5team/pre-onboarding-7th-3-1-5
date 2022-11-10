@@ -6,7 +6,7 @@ export const StSearch = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top: 200px;
+  margin-top: 50px;
 `;
 
 export const StTitle = styled.p`
@@ -25,7 +25,7 @@ export const InputWrap = styled.div`
   justify-content: start;
   align-items: center;
 
-  width: 400px;
+  width: 700px;
   padding: 20px 20px;
 
   border: 2px solid white;

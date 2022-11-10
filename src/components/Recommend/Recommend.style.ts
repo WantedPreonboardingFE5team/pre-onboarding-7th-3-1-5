@@ -1,12 +1,26 @@
 import styled from 'styled-components';
 
 export const StRecommend = styled.div`
-  width: 400px;
+  width: 700px;
+  overflow-y: scroll;
+  max-height: 400px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.4);
+    margin-top: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+  }
 
   margin-top: 5px;
   padding: 20px 20px;
 
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: white;
 `;
 
@@ -24,11 +38,11 @@ export const StRecommendContent = styled.li<{ isFocus?: boolean }>`
   padding: 20px 0;
 
   svg {
-    margin-right: 10px;
+    margin: 0 10px;
   }
 
   p {
-    line-height: 5px;
+    line-height: 1.5;
   }
 
   span {
