@@ -15,9 +15,7 @@ const RecommendList = () => {
 
   const keyRef = useRef<HTMLUListElement>(null);
 
-  const keyword = useRecoilValue(keywordState);
-
-  console.log('index', index);
+  const keyword = useRecoilValue(keywordState).toLocaleUpperCase();
 
   useEffect(() => {
     setRecommendList([]); // 이 과정이 없으면 이전 추천 목록이 남아있어서 로딩중 아래에 데이터가 나와있음
