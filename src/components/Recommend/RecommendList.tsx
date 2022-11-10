@@ -17,6 +17,8 @@ const RecommendList = () => {
 
   const keyword = useRecoilValue(keywordState);
 
+  console.log('index', index);
+
   useEffect(() => {
     setRecommendList([]); // 이 과정이 없으면 이전 추천 목록이 남아있어서 로딩중 아래에 데이터가 나와있음
     setIndex(-1); // 포커싱이 검색창으로 돌아가야하기 때문, 설정 안한다면 이전 index에 머물러서 처음 검색했는데 추천 검색어 중간에 포커싱 되어있을 수 있다
@@ -40,15 +42,15 @@ const RecommendList = () => {
       <ul ref={keyRef}>
         {recommendList &&
           recommendList.map((recommend: IIllness, idx: number) => {
-            const prevKeword = recommend.sickNm.split(keyword)[0];
-            const nextKeword = recommend.sickNm.split(keyword)[1];
+            const prevKeyword = recommend.sickNm.split(keyword)[0];
+            const nextKeyword = recommend.sickNm.split(keyword)[1];
             return (
               <StRecommendContent key={recommend.sickCd} isFocus={index === idx}>
                 <FiSearch />
                 <p>
-                  {prevKeword}
+                  {prevKeyword}
                   <span>{keyword}</span>
-                  {nextKeword}
+                  {nextKeyword}
                 </p>
               </StRecommendContent>
             );
