@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { FiSearch } from 'react-icons/fi';
 import { keywordState, recommendState, keydownState } from '../../recoil/searchState';
 import Recommend from '../Recommend/Recommend';
@@ -7,7 +7,7 @@ import { StSearch, StTitle, InputWrap, StInput } from './Search.style';
 
 const Search = () => {
   const [keyword, setKeyword] = useRecoilState(keywordState);
-  const [index, setIndex] = useRecoilState(keydownState);
+  const setIndex = useSetRecoilState(keydownState);
   const recommendListLength = useRecoilValue(recommendState).length;
 
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,8 +23,6 @@ const Search = () => {
       setIndex((prev) => (prev > -1 ? prev - 1 : prev));
     }
   };
-
-  console.log('index', index);
 
   return (
     <StSearch>
