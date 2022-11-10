@@ -23,4 +23,4 @@
 
 - [x] API 호출할 때마다 console.info('calling api') 출력
 
-      .env파일 생성 후 REACT_APP_SERVER_URL = http://localhost:4000/sick?q 작성 - 저장
+      .env파일 생성 후 REACT_APP_SERVER_URL = http://localhost:4000/sick 작성 - 저장
