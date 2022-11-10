@@ -22,3 +22,5 @@
       사용자가 입력을 멈추었을 때의 키워드를 API 호출하여 검색하게 된다.
 
 - [x] API 호출할 때마다 console.info('calling api') 출력
+
+      .env파일 생성 후 REACT_APP_SERVER_URL = http://localhost:4000/sick?q 작성 - 저장
