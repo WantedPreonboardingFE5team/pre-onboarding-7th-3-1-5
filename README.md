@@ -185,13 +185,13 @@ const debounce = setTimeout(
 ## 2. ⌨️ 키보드만으로 추천 검색어 리스트로 이동 가능하도록 구현
 ![1](https://user-images.githubusercontent.com/28972561/201142321-aa4ce71f-a733-49dc-8146-16a6157547e5.gif)
 1. `recoil`을 사용하여 상태 관리를 했습니다.
-2. `Input` 태그에 `onKeyDown` 이벤트 핸들러를 이용하여 눌리는 키를 추적
-3. 아래 방향, 위 방향을 추적하기 위해 `event.key`가 `ArrowDown`과 `ArrowUp`일 때의 이벤트를 다룸
-4. 검색창에 포커싱이 위치해있을 때의 기본 `index`는 -1이고, 아래 버튼을 누르면 `index + 1`, 위 버튼을 누르면 `index -1`이 됨
-5. `Input`이 존재하는 `Search.tsx`파일에서 `useSetRecoilState()`을 사용하여 `index`변화를 감지
-6. `index`가 필요한 `RecommendList.tsx`파일에서 `useRecoilValue()`를 사용하여 `index`사용
+2. `Input` 태그에 `onKeyDown` 이벤트 핸들러를 이용하여 눌리는 키를 추적 합니다.
+3. 아래 방향, 위 방향을 추적하기 위해 `event.key`가 `ArrowDown`과 `ArrowUp`일 때의 이벤트를 다룹니다.
+4. 검색창에 포커싱이 위치해있을 때의 기본 `index`는 -1이고, 아래 버튼을 누르면 `index + 1`, 위 버튼을 누르면 `index -1`이 됩니다
+5. `Input`이 존재하는 `Search.tsx`파일에서 `useSetRecoilState()`을 사용하여 `index`변화를 감지 합니다.
+6. `index`가 필요한 `RecommendList.tsx`파일에서 `useRecoilValue()`를 사용하여 `index`사용 합니다.
     1. `Input`에 새로운 검색 키워드를 감지하여 api를 새로 호출할 시 `index`를 초기화하기 위해
-    api를 호출하고 있는 `RecommendList.tsx`파일에서 `useResetRecoilState()`을 사용하여 초기값으로 `reset`
+    api를 호출하고 있는 `RecommendList.tsx`파일에서 `useResetRecoilState()`을 사용하여 초기값으로 `reset` 합니다.
     
 ## 3. 검색 사이트 레이아웃
 ![4](https://user-images.githubusercontent.com/28972561/201143679-2e12c35f-d976-428f-ac1b-7739d0f24603.gif)
