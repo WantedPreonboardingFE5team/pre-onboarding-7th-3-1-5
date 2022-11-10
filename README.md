@@ -90,7 +90,7 @@ $ npm start
 <div markdown="1">
 
 - react-icons : 아이콘 적용<br>
-- eslint : 팀원간 코드 컨벤션 통일<br>
+- react-router-dom : 라우터 설정<br>
 - react-spinners : 스피너<br>
 - recoil : 전역 상태 관리<br>
 - styled-components : 스타일 적용<br>
