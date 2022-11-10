@@ -1,16 +1,30 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { FiSearch } from 'react-icons/fi';
-import { keywordState } from '../../recoil/keywordState';
+import { keywordState, recommendState, keydownState } from '../../recoil/searchState';
 import Recommend from '../Recommend/Recommend';
 import { StSearch, StTitle, InputWrap, StInput } from './Search.style';
 
 const Search = () => {
   const [keyword, setKeyword] = useRecoilState(keywordState);
+  const [index, setIndex] = useRecoilState(keydownState);
+  const recommendListLength = useRecoilValue(recommendState).length;
 
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
   };
+
+  const keyboardHandle = (e: React.KeyboardEvent) => {
+    // 범위 지정을 해주는 이유는 추천 검색어창을 넘어가서 index가 무한대로 커지거나 작아질 수 있기 때문
+    if (e.key === 'ArrowDown') {
+      setIndex((prev) => (prev < recommendListLength - 1 ? prev + 1 : prev));
+    }
+    if (e.key === 'ArrowUp') {
+      setIndex((prev) => (prev > -1 ? prev - 1 : prev));
+    }
+  };
+
+  console.log('index', index);
 
   return (
     <StSearch>
@@ -20,7 +34,13 @@ const Search = () => {
       </StTitle>
       <InputWrap>
         <FiSearch />
-        <StInput type="search" placeholder="질환명을 입력해 주세요." value={keyword} onChange={onChangeHandle} />
+        <StInput
+          type="search"
+          placeholder="질환명을 입력해 주세요."
+          value={keyword}
+          onChange={onChangeHandle}
+          onKeyDown={keyboardHandle}
+        />
       </InputWrap>
       {keyword && <Recommend />}
     </StSearch>

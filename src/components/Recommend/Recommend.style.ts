@@ -13,13 +13,15 @@ export const StRecommend = styled.div`
 export const StRecommendTitle = styled.p`
   font-size: 12px;
   color: gray;
+
+  margin: 10px 0;
 `;
 
-export const StRecommendContent = styled.div`
+export const StRecommendContent = styled.li<{ isFocus?: boolean }>`
   display: flex;
   align-items: center;
 
-  margin-top: 20px;
+  padding: 20px 0;
 
   svg {
     margin-right: 10px;
@@ -32,6 +34,9 @@ export const StRecommendContent = styled.div`
   span {
     font-weight: 700;
   }
+
+  border-radius: 10px;
+  background-color: ${(props) => props.isFocus && '#dbdbdb'};
 `;
 
 export const StLoading = styled.div`
