@@ -190,7 +190,7 @@ const debounce = setTimeout(
 4. 검색창에 포커싱이 위치해있을 때의 기본 `index`는 -1이고, 아래 버튼을 누르면 `index + 1`, 위 버튼을 누르면 `index -1`이 됩니다
 5. `Input`이 존재하는 `Search.tsx`파일에서 `useSetRecoilState()`을 사용하여 `index`변화를 감지 합니다.
 6. `index`가 필요한 `RecommendList.tsx`파일에서 `useRecoilValue()`를 사용하여 `index`사용 합니다.
-    1. `Input`에 새로운 검색 키워드를 감지하여 api를 새로 호출할 시 `index`를 초기화하기 위해
+7. `Input`에 새로운 검색 키워드를 감지하여 api를 새로 호출할 시 `index`를 초기화하기 위해
     api를 호출하고 있는 `RecommendList.tsx`파일에서 `useResetRecoilState()`을 사용하여 초기값으로 `reset` 합니다.
     
 ## 3. 검색 사이트 레이아웃
